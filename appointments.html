@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Scheduling</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        nav {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .header button:hover {
+            background-color: #45a049;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="vihan.html">Home</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="services.html">About Us</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <form id="appointmentForm">
+        <label for="id">ID:</label>
+        <input type="text" id="id" readonly>
+        <label for="date">Date:</label>
+        <input type="date" id="date" min="" required>
+        <label for="time">Time:</label>
+        <select id="time" required></select>
+        <label for="client">Client Name:</label>
+        <input type="text" id="client" required>
+        <label for="service">Service:</label>
+        <select id="service" required>
+            <option value="Physio">Physiotherapy</option>
+            <option value="ElderlyCare">Elderly Care</option>
+            <option value="Rehabilitation">Rehabilitation</option>
+        </select>
+        <button type="button" onclick="scheduleAppointment()">Schedule Appointment</button>
+    </form>
+
+    <h2>Upcoming Appointments</h2>
+
+    <table id="appointmentTable">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Client Name</th>
+            <th>Service</th>
+        </tr>
+    </table>
+
+    <script>
+        var appointmentCounter = 1;
+
+        // Populate time dropdown with options for every half an hour
+        var timeDropdown = document.getElementById('time');
+        for (var i = 0; i < 24; i++) {
+            for (var j = 0; j < 60; j += 30) {
+                var hour = i.toString().padStart(2, '0');
+                var minute = j.toString().padStart(2, '0');
+                var time = hour + ':' + minute;
+                var option = document.createElement('option');
+                option.value = time;
+                option.text = time;
+                timeDropdown.add(option);
+            }
+        }
+
+        function scheduleAppointment() {
+            var dateInput = document.getElementById('date');
+            var timeInput = document.getElementById('time');
+            var clientInput = document.getElementById('client');
+            var serviceInput = document.getElementById('service');
+
+            var date = dateInput.value;
+            var time = timeInput.value;
+            var client = clientInput.value;
+            var service = serviceInput.value;
+
+            if (!date || !time || !client || !service) {
+                alert('Please fill in all fields before scheduling an appointment.');
+                return;
+            }
+
+            var currentDate = new Date();
+            var selectedDate = new Date(date + 'T' + time);
+
+            // Check if an appointment for the same client already exists
+            if (isExistingAppointment(client)) {
+                alert('An appointment for this client already exists. Please choose a different client name.');
+                return;
+            }
+
+            if (selectedDate < currentDate) {
+                alert('Please select a future date and time.');
+                return;
+            }
+
+            var id = appointmentCounter++;
+            var table = document.getElementById('appointmentTable');
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+            cell1.innerHTML = id;
+            cell2.innerHTML = date;
+            cell3.innerHTML = time;
+            cell4.innerHTML = client;
+            cell5.innerHTML = service;
+
+            resetForm();
+        }
+
+        function isExistingAppointment(clientName) {
+            var table = document.getElementById('appointmentTable');
+            for (var i = 1; i < table.rows.length; i++) {
+                if (table.rows[i].cells[3].innerHTML === clientName) {
+                    return true;
+                }
+            }
+            return false;
+        }
+      
+        function resetForm() {
+            document.getElementById('id').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('time').value = '';
+            document.getElementById('client').value = '';
+            document.getElementById('service').value = '';
+            document.getElementById('id').value = appointmentCounter;
+            removePastAppointments();
+        }
+
+        function removePastAppointments() {
+            var table = document.getElementById('appointmentTable');
+            var currentDate = new Date();
+
+            for (var i = table.rows.length - 1; i > 0; i--) {
+                var appointmentDate = new Date(table.rows[i].cells[1].innerHTML + 'T' + table.rows[i].cells[2].innerHTML);
+                if (appointmentDate < currentDate) {
+                    table.deleteRow(i);
+                }
+            }
+        }
+        function isDuplicateTime(selectedTime) {
+            var table = document.getElementById('appointmentTable');
+            for (var i = 1; i < table.rows.length; i++) {
+                var existingTime = table.rows[i].cells[2].innerHTML;
+                if (existingTime === selectedTime) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        function goToHomePage() {
+            window.location.href = "vihan.html"
+            alert('Going back to the home page!');
+        }
+    </script>
+
+</body>
+</html>
