@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>vihaanphysiocare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -12,13 +22,11 @@
             background-color: #f4f4f4;
             color: #333;
         }
-    
 
         header {
-            
             color: #fff;
             text-align: center;
-            padding-right: 150px;
+            padding-right: 5%;
         }
 
         nav {
@@ -41,7 +49,6 @@
         }
 
         section {
-            
             margin: 2rem;
             padding: 2rem;
             background-color: #fff;
@@ -51,17 +58,20 @@
         }
 
         h2 {
-            color: #007BFF;
+            color: black;
+            
         }
 
         ul {
             list-style-type: none;
             padding: 0;
+           
         }
 
         li {
             margin-bottom: 0.5rem;
         }
+
         footer {
             background-color: #3498db;
             color: #fff;
@@ -73,16 +83,61 @@
             position: absolute;
             top: 2rem;
             right: 2rem;
-            width: 200px; /* Adjust the size as needed */
+            width: 40%; /* Adjust the size as needed */
+            max-width: 200px; /* Set a maximum width */
             height: auto;
         }
 
-        /* Add additional styling as needed */
+        .container {
+            position: relative;
+            width: 90%; /* Adjust the size as needed */
+            max-width: 1200px; /* Set a maximum width */
+            margin: 0 auto; /* Center the container */
+        }
 
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+
+        .container:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            font-size: 3vw; /* Adjust the size as needed */
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        /* Footer Styles */
+        footer {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
     </style>
 </head>
+
 <body>
-   
 
     <nav>
         <a href="vihan.html">Home</a>
@@ -91,76 +146,121 @@
         <a href="contact.html">Contact</a>
     </nav>
     <header>
-        <img src="Vijaan.png">
+        <img src="Vijaan.png" style="max-width: 100%;">
     </header>
+    <br>
+    <div class="container">
+        <img src="elderly.png" alt="Avatar" class="image">
+        <div class="overlay">
+            <div class="text">
+                <h2>Specialized Elderly Care</h2>
+                <ul>
+                    <li>Fall Prevention in Elderly</li>
+                    <li>Generalized Aged Conditions</li>
+                    <li>Muscle Weakness</li>
+                    <li>Balance & Coordination</li>
+                </ul>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <img src="pain.jpeg"  alt="Avatar" class="image">
+        <div class="overlay">
+            <div class="text">
+                <h2>Pain Management</h2>
+                <h3>International Pain Modalities</h3>
+                <ul>
+                    <li>Interferential Therapy (IFT)</li>
+                    <li>Transverse Electrical Nerve Stimulation (TENS)</li>
+                    <li>Faradic Currents</li>
+                    <li>Galvanic Currents</li>
+                </ul>
+                
+                
+            </div>
+        
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <img src="pain2.jpeg"  alt="Avatar" class="image">
+        <div class="overlay">
+            <div class="text">
+                <h2>Pain Management</h2>
+                <h3>Old & Traditional Methods</h3>
+                <ul>
+                    <li>Hydrotherapy</li>
+                    <li>Cryotherapy</li>
+                    <li>Infrared Therapy</li>
+                    <li>Manual Therapy</li>
+                </ul>
+                
+            </div>
+        
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <img src="ortho.jpeg"  alt="Avatar" class="image">
+        <div class="overlay">
+            <div class="text">
+                <h2>Ortho</h2>
+                <ul>
+                    <li>Arthritis</li>
+                    <li>Spinal Problems</li>
+                    <li>Spondylitis</li>
+                    <li>Spondylosis</li>
+                    <li>Joint Pain/Muscle Pain</li>
+                    <li>Frozen/Pain in Shoulder</li>
+                </ul>
+                
+            </div>
+        
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <img src="neuro.jpeg"  alt="Avatar" class="image">
+        <div class="overlay">
+            <div class="text">
+                <h2>Neuro</h2>
+                <ul>
+                    <li>Stroke/Paralysis</li>
+                    <li>Bells Palsy/Facial Palsy</li>
+                    <li>Parkinson</li>
+                    <li>Diabetic Neuropathy</li>
+                </ul>
+                
+            </div>
+        
+        </div>
+    </div>
 
-    <section id="elderlyCare">
-        <h2>Specialized Elderly Care</h2>
-        <ul>
-            <li>Fall Prevention in Elderly</li>
-            <li>Generalized Aged Conditions</li>
-            <li>Muscle Weakness</li>
-            <li>Balance & Coordination</li>
-        </ul>
-        <img src="elderly.png" style="height: 80%;" alt="Elderly Care Image" class="section-image">
-    </section>
-
-    <section id="painManagement">
-        <h2>Pain Management</h2>
-        <h3>International Pain Modalities</h3>
-        <ul>
-            <li>Interferential Therapy (IFT)</li>
-            <li>Transverse Electrical Nerve Stimulation (TENS)</li>
-            <li>Russian Currents</li>
-            <li>Faradic Currents</li>
-            <li>Galvanic Currents</li>
-        </ul>
-        <h3>Old & Traditional Methods</h3>
-        <ul>
-            <li>Hydrotherapy</li>
-            <li>Cryotherapy</li>
-            <li>Infrared Therapy</li>
-            <li>Manual Therapy</li>
-        </ul>
-        <img src="pain.jpeg" style="height: 80%;" alt="Pain Management Image" class="section-image">
-    </section>
-    <section id="ortho">
-        <h2>Ortho</h2>
-        <ul>
-            <li>Arthritis</li>
-            <li>Spinal Problems</li>
-            <li>Spondylitis</li>
-            <li>Spondylosis</li>
-            <li>Joint Pain/Muscle Pain</li>
-            <li>Frozen/Pain in Shoulder</li>
-        </ul>
-        <img src="ortho.jpeg" style="height: 80%;" alt="ortho" class="section-image">
-    </section>
-
-    <section id="neuro">
-        <h2>Neuro</h2>
-        <ul>
-            <li>Stroke/Paralysis</li>
-            <li>Bells Palsy/Facial Palsy</li>
-            <li>Parkinson</li>
-            <li>Diabetic Neuropathy</li>
-        </ul>
-        <img src="neuro.jpeg" style="height: 80%;" alt="Elderly Care Image" class="section-image">
-    </section>
-
-    <section id="rehabilitation">
-        <h2>Rehabilitation</h2>
-        <ul>
-            <li>Exercise Therapy</li>
-            <li>Palliative Care</li>
-            <li>Post & Pre Operative</li>
-            <li>Sports Injury</li>
-        </ul>
-        <img src="rehabiliation.jpeg" style="height: 80%;" alt="Elderly Care Image" class="section-image">
-    </section>
-    <!-- Repeat similar structure for other sections -->
-    <footer>
-        <p>Contact us: vihaanphysiocare@gmail.com | Phone: +91 70757 12306 /+91 96520 12306</p>
-    </footer>
+    <br><br>
+    <div class="container">
+        <img src="rehabiliation.jpeg"  alt="Avatar" class="image">
+        <div class="overlay">
+            <div class="text">
+                <h2>Rehabilitation</h2>
+                <ul>
+                    <li>Exercise Therapy</li>
+                    <li>Palliative Care</li>
+                    <li>Post & Pre Operative</li>
+                    <li>Sports Injury</li>
+                </ul>
+                
+            </div>
+        
+        </div>
+    </div>
+<!-- Footer Section -->
+<footer>
+    <p>Contact us: vihaanphysiocare@gmail.com | Phone: +91 70757 12306 /+91 96520 12306</p>
+    <a href="https://maps.app.goo.gl/HhhokqMX6HhDLXXt7" target="_blank"><i class="fa fa-map-marker" style="font-size:30px;color:red">Click here to open location in maps</i></a>
+</footer>
 </body>
+
 </html>
